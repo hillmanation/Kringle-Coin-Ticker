@@ -37,6 +37,7 @@ def main():
         KringleKoin['change'] = int(KringleKoin['change'] * (-1))
     kringle_new_price = rand_trend(initialKringle, int(KringleKoin['change']), int(KringleKoin['var']))
     print(f"New KringleKoin value ${kringle_new_price}")
+    put_text(f"New KringleKoin value ${kringle_new_price}")
     export.append(("KringleKoin", kringle_new_price, new_time.strftime('%H:%M:%S'), 53))
 
     KeeblerCoin = input_group("KeeblerCoin", [
@@ -48,6 +49,7 @@ def main():
         KeeblerCoin['change'] = int(KeeblerCoin['change'] * (-1))
     keebler_new_price = rand_trend(initialKeebler, int(KeeblerCoin['change']), int(KeeblerCoin['var']))
     print(f"New KeeblerCoin value ${keebler_new_price}")
+    put_text(f"New KeeblerCoin value ${keebler_new_price}")
     export.append(("KeeblerCoin", keebler_new_price, new_time.strftime('%H:%M:%S'), 53))
 
     export = tuple(export)
@@ -86,8 +88,6 @@ def main():
     with open("stock_list.csv", "w") as f:
         writer = csv.writer(f, delimiter=",", lineterminator="\r")
         writer.writerows(stock_ticker_new)
-
-    print(stock_ticker_new)
 
     put_button("Refresh", onclick=lambda: run_js('window.location.reload()'))
 
